@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Department } from '../models/department.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { Employee } from '../models/employee.model';
 
 @Component({
   selector: 'app-create-employee',
@@ -9,7 +10,19 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
-gender = 'male'; // default check
+// gender = 'male'; // default check
+employee: Employee = {
+id: null,
+name: null,
+gender: null,
+email: '',
+phoneNumber: null,
+contactPreference: null,
+dateOfBirth: null,
+department: null,
+isActive: null,
+photoPath: null
+};
 departments: Department[] = [
   {
     id: 1,
@@ -42,7 +55,7 @@ dateOfBirth: Date = new Date('04-12-2018');
   ngOnInit() {
   }
 
-  saveEmployee(empForm: NgForm): void {
-    console.log(empForm.value);
+  saveEmployee(newEmployee: Employee): void {
+    console.log(newEmployee);
   }
 }
