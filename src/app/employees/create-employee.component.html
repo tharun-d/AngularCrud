@@ -11,16 +11,17 @@
         <span class="help-block" *ngIf="name.invalid && name.touched">Name is required</span>
       </div>
 
-      <div class="form-group" [class.has-error]="email.invalid && email.touched" [class.has-success]="email.valid">
+      <div class="form-group" [class.has-error]="email.invalid">
           <label for="email" class="control-label">Email</label>
-          <input type="text" required [email]="!employee.email==''" id="email" [(ngModel)]="employee.email" name="email" class="form-control" #email="ngModel">
-          <span class="help-block" *ngIf="email.errors?.required && email.touched">Email is required</span>
-          <span class="help-block" *ngIf="email.errors?.email && email.touched">Email is not valid</span>
+          <input type="text" [required]="contactPreference.value=='email'" [email]="!employee.email==''" id="email" [(ngModel)]="employee.email" name="email" class="form-control" #email="ngModel">
+          <span class="help-block" *ngIf="email.errors?.required">Email is required</span>
+          <span class="help-block" *ngIf="email.errors?.email">Email is not valid</span>
         </div>
 
-        <div class="form-group">
-            <label for="phoneNumber">PhoneNumber</label>
-            <input type="text" id="phoneNumber" [(ngModel)]="employee.phoneNumber" name="phoneNumber" class="form-control">
+        <div class="form-group" [class.has-error]="phone.invalid">
+            <label for="phoneNumber" class="control-label">PhoneNumber</label>
+            <input type="text" id="phoneNumber" [required]="contactPreference.value=='phone'" [(ngModel)]="employee.phoneNumber" name="phoneNumber" class="form-control" #phone="ngModel">
+            <span class="help-block" *ngIf="phone.invalid">Phone Number is required</span>
           </div> 
           
           <div class="form-group" [class.has-error]="contactPreference.invalid && contactPreference.touched" [class.has-success]="contactPreference.valid">
@@ -56,19 +57,21 @@
           <div class="form-group">
               <div class="form-control">
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="isActive" name="isActive" [(ngModel)]="employee.isActive">
+                    <input type="checkbox" value="isActive" name="isActive" [(ngModel)]="employee.isActive" #isActive="ngModel">
                     Is Active
                 </label>
               </div>
             </div>
 
-            <div class="form-group">               
-                  <label for="department">
+            <div class="form-group" [class.has-error]="department.touched && department.value=='-1'" [class.has-success]="!department.value=='-1'">               
+                  <label for="department" class="control-label">
                     Department
                   </label>
-                  <select id="department" name="department" [(ngModel)]="employee.department" class="form-control">
+                  <select id="department" name="department" [(ngModel)]="employee.department" class="form-control" #department="ngModel">
+                    <option value="-1">Select department</option>
                     <option *ngFor="let department of departments" [value]="department.id">{{department.name}}</option>
-                  </select>        
+                  </select>
+                  <span class="help-block" *ngIf="department.touched && department.value=='-1'">Department is required</span>        
               </div>
             
             <div class="row">

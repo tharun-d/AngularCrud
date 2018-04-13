@@ -19,7 +19,7 @@ email: '',
 phoneNumber: null,
 contactPreference: null,
 dateOfBirth: null,
-department: null,
+department: '-1', // selecting default
 isActive: null,
 photoPath: null
 };
