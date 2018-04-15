@@ -1,8 +1,13 @@
 <!-- <h1 *ngIf="dataFromChild">
   You Clicked : {{dataFromChild.name + '' + dataFromChild.gender}}
 </h1> -->
+<h1 #h1Variable>
+
+</h1>
 <div *ngFor="let employee of employees">
-    <app-display-employee [employee]="employee"></app-display-employee>
+  <div (click)="h1Variable.innerHTML = childComponent.getEmployeeNameAndGender()">
+    <app-display-employee [employee]="employee" #childComponent></app-display-employee>
+  </div>
 </div>
 
 <!-- <button (click)="nextEmployee()" class="btn btn-primary">
