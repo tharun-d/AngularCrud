@@ -27,7 +27,7 @@ export class EmployeeService {
             photoPath: 'assets/images/Vinni.jpg'
           },
           {
-            id: 1,
+            id: 3,
             name: 'Sujith',
             gender: 'male',
             contactPreference: 'Email',
@@ -40,6 +40,9 @@ export class EmployeeService {
     ];
     getEmployees(): Employee[] {
         return this.listEmployees;
+    }
+    getEmployee(id: number): Employee {
+        return this.listEmployees.find(e => e.id === id);
     }
     saveEmployee(employee: Employee) {
       this.listEmployees.push(employee);
