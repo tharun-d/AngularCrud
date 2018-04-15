@@ -11,7 +11,7 @@ export class EmployeeService {
             contactPreference: 'Email',
             email: 'tharundintakurthi@gmail.com',
             dateOfBirth: new Date('01-01-1994'),
-            department: 'IT',
+            department: '1',
             isActive: true,
             photoPath: 'assets/images/Tharun.jpg'
           },
@@ -22,7 +22,7 @@ export class EmployeeService {
             contactPreference: 'Phone',
             phoneNumber: 9490285247,
             dateOfBirth: new Date('01-01-1994'),
-            department: 'IT',
+            department: '2',
             isActive: true,
             photoPath: 'assets/images/Vinni.jpg'
           },
@@ -33,12 +33,15 @@ export class EmployeeService {
             contactPreference: 'Email',
             email: 'sujith@gmail.com',
             dateOfBirth: new Date('01-01-1994'),
-            department: 'IT',
+            department: '3',
             isActive: true,
             photoPath: 'assets/images/Sujith.jpg'
           }
     ];
     getEmployees(): Employee[] {
         return this.listEmployees;
+    }
+    saveEmployee(employee: Employee) {
+      this.listEmployees.push(employee);
     }
 }
