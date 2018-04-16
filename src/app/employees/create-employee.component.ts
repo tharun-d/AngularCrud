@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
-  @ViewChild('employeeForm') public createEmployeeForm: NgForm // used in router
+  @ViewChild('employeeForm') public createEmployeeForm: NgForm ; // used in router
 // gender = 'male'; // default check
 employee: Employee = {
 id: null,
