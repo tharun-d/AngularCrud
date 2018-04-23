@@ -24,8 +24,6 @@ dateOfBirth: null,
 department: 'select', // selecting default
 isActive: null,
 photoPath: null
-
-
 };
 departments: Department[] = [
   {
